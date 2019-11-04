@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">CRUD</string>
+    <string name="action_settings">Settings</string>
+    <!-- user_add (Layout)-->
+    <string name="Name">Name:</string>
+    <string name="Email">Email:</string>
+    <string name="Age">Age:</string>
+    <string name="Notes">Notes:</string>
+
+
+</resources>
