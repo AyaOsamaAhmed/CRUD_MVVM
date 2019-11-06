@@ -16,7 +16,7 @@ import crud.aya.test.com.Room.UserEntity;
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserHolder> {
 
     private List<UserEntity> entityList = new ArrayList<>();
-
+    public  onItemClickLisiner lisiner;
     @NonNull
     @Override
     public UserHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -33,6 +33,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserHolder> {
         holder.userEmail.setText(currentUser.getEmail());
         holder.userAge.setText(String.valueOf(currentUser.getAge()));
         holder.userNotes.setText(currentUser.getNotes());
+
+
     }
 
     @Override
@@ -40,6 +42,10 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserHolder> {
         return entityList.size();
     }
 
+    public UserEntity getUserId(int pos){
+            return entityList.get(pos);
+
+    }
     public void setEntityList(List<UserEntity> entityList) {
         this.entityList = entityList;
         notifyDataSetChanged();
@@ -61,9 +67,24 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserHolder> {
             userEmail =item_view.findViewById(R.id.user_email);
             userAge=item_view.findViewById(R.id.user_age);
             userNotes=item_view.findViewById(R.id.user_notes);
+
+            item_view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    if(lisiner!= null &&position != RecyclerView.NO_POSITION){
+                        lisiner.onItemClick(entityList.get(position));
+                    }
+                }
+            });
         }
-
-
     }
 
+    public interface onItemClickLisiner {
+        void onItemClick(UserEntity userEntity);
+    }
+
+    public void setOnItemclickLisiner (onItemClickLisiner lisiner){
+        this.lisiner=lisiner;
+    }
 }
