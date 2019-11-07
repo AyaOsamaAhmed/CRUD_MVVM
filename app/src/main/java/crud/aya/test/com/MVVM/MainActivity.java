@@ -22,8 +22,13 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import javax.sql.DataSource;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import crud.aya.test.com.Fragment.NavigationGraph;
+import crud.aya.test.com.Paging.DataActivity;
 import crud.aya.test.com.R;
 import crud.aya.test.com.Room.UserEntity;
 import crud.aya.test.com.User.UserAdapter;
@@ -51,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
+        setTitle("All User");
         // Recycle view
         recyclerItem.setLayoutManager(new LinearLayoutManager(this));
         recyclerItem.setHasFixedSize(true);
@@ -133,5 +139,40 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_main,menu);
+        return true;
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.FragmentView:
+                fragmentView();
+                return true;
+            case R.id.Paging:
+                pagingTest();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void pagingTest() {
+        Intent paging = new Intent(MainActivity.this, DataActivity.class);
+        startActivity(paging);
+    }
+
+    private void fragmentView() {
+
+        Intent fragment = new Intent(MainActivity.this, NavigationGraph.class);
+        startActivity(fragment);
+
+    }
 
 }

@@ -3,8 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="crud.aya.test.com.MVVM.MainActivity">
     <item
-        android:id="@+id/deleted_all"
+        android:id="@+id/FragmentView"
         android:orderInCategory="100"
-        android:title="Deleted All Users"
+        android:title="Fragment View"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/Paging"
+        android:orderInCategory="100"
+        android:title="Paging Test"
+        app:showAsAction="never" />
+
 </menu>

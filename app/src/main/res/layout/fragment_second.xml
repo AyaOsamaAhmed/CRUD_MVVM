@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment.SecondFragment">
+
+    tools:context=".Fragment.MainFargment">
 
     <!-- TODO: Update blank fragment layout -->
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_blank_fragment"
+        android:text="Good work .. Navigation Graph"
         android:layout_centerInParent="true"
         android:id="@+id/text_fragment"
         android:textSize="25sp"
         />
 
     <Button
+        android:id="@+id/Return_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/b_frist_fragment"
-        android:text="Move To Second"
-        android:layout_below="@+id/text_fragment"
         android:layout_centerInParent="true"
+        android:layout_below="@+id/text_fragment"
+        android:text="Return To All Users"
+        android:textSize="20sp"
         />
 
-</FrameLayout>
+</RelativeLayout>

@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="crud.aya.test.com">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -24,6 +26,11 @@
             android:parentActivityName=".MVVM.MainActivity"
             />
         <activity android:name=".User.UserEdit"/>
+
+        <activity android:name=".Fragment.NavigationGraph"/>
+
+        <activity android:name=".Paging.DataActivity"/>
+
     </application>
 
 </manifest>

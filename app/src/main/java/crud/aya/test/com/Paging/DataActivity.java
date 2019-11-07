@@ -4,53 +4,32 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-/*
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.paging.PagedList;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import crud.aya.test.com.R;
+
 public class DataActivity extends AppCompatActivity {
+ RecyclerView recyclerView;
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.recycler_view);
 
-        private FeedListAdapter adapter;
-        private FeedViewModel feedViewModel;
-        private FeedActivityBinding binding;
+    recyclerView = findViewById(R.id.recyclerView);
 
-    @Override
-        protected void onCreate(@Nullable Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
+    final ClientAdapter adapter = new ClientAdapter();
 
-            /*
-             * Step 1: Using DataBinding, we setup the layout for the activity
-             *
-             * */
-  //          binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-
-            /*
-             * Step 2: Initialize the ViewModel
-             *
-             * */
-    //        feedViewModel = ViewModelProviders.of(this).get(FeedViewModel.class);
-
-            /*
-             * Step 2: Setup the adapter class for the RecyclerView
-             *
-             * */
-      //      binding.listFeed.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-      //      adapter = new FeedListAdapter(getApplicationContext());
-
-
-            /*
-             * Step 4: When a new page is available, we call submitList() method
-             * of the PagedListAdapter class
-             *
-             * */
-    /*
-            feedViewModel.getArticleLiveData().observe(this, pagedList -> {
-                adapter.submitList(pagedList);
-            });
-
-            feedViewModel.getNetworkState().observe(this, networkState -> {
-                adapter.setNetworkState(networkState);
-            });
-
-            binding.listFeed.setAdapter(adapter);
-        }
-
-}
-*/
+    recyclerView.setLayoutManager(new LinearLayoutManager(this));
+    ClientViewModel itemViewModel = ViewModelProviders.of(this).get(ClientViewModel.class);
+    itemViewModel.userPagedList.observe(this, new Observer<PagedList<Client>>() {
+      @Override public void onChanged(PagedList<Client> users) {
+        adapter.submitList(users);
+      }
+    });
+    recyclerView.setAdapter(adapter);
+  }
+  }
